@@ -1,3 +1,5 @@
 /use_cases/eval_student/data/*
 /use_cases/eval_student/data/*/
 /home/kevin/projects/jesaja/Projekt_Jesaja/use_cases/eval_student/preprocessed_test_set.csv
+.ipynb_checkpoints
+__pycache__/
