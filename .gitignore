@@ -1,4 +1,5 @@
 /use_cases/eval_student/data/*
+/use_cases/eval_student/train_NER.csv
 /use_cases/eval_student/data/*/
 /use_cases/eval_student/preprocessed_test_set.csv
 .ipynb_checkpoints

@@ -24,12 +24,12 @@ def provide_post_return(pred, inp):
     slow, fast = 0, 1
     while fast < len(pred):
         if pred[fast] != pred[slow]:
-            out_dict_form[str(slow)] = (fast - 1, pred[slow])
+            out_dict_form[slow] = (fast - 1, pred[slow])
             slow = fast
 
         fast += 1
 
-    out_dict_form[str(slow)] = (fast - 1, pred[slow])
+    out_dict_form[slow] = (fast - 1, pred[slow])
 
 
     res["input"] = inp

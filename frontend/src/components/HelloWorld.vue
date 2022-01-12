@@ -5,13 +5,24 @@
         <h1>Hallo Kevin</h1>
       </v-col>
       <v-col cols="12">
-        <v-text-field
+        <v-textarea
+          v-model = "inp"
           name="name"
           label="Test Eingabe"
           id="id"
           outlined
-        ></v-text-field>
+        ></v-textarea>
       </v-col>
+      <v-btn
+        color="blue-grey"
+        class="ma-2 white--text"
+        fab
+        @click="predict">
+        <v-icon dark>
+          mdi-cloud-upload
+        </v-icon>
+      </v-btn>
+      <p>Message is: {{ inp }}</p>
     </v-row>
   </v-container>
 </template>
@@ -21,56 +32,15 @@
     name: 'HelloWorld',
 
     data: () => ({
-      ecosystem: [
-        {
-          text: 'vuetify-loader',
-          href: 'https://github.com/vuetifyjs/vuetify-loader',
-        },
-        {
-          text: 'github',
-          href: 'https://github.com/vuetifyjs/vuetify',
-        },
-        {
-          text: 'awesome-vuetify',
-          href: 'https://github.com/vuetifyjs/awesome-vuetify',
-        },
-      ],
-      importantLinks: [
-        {
-          text: 'Documentation',
-          href: 'https://vuetifyjs.com',
-        },
-        {
-          text: 'Chat',
-          href: 'https://community.vuetifyjs.com',
-        },
-        {
-          text: 'Made with Vuetify',
-          href: 'https://madewithvuejs.com/vuetify',
-        },
-        {
-          text: 'Twitter',
-          href: 'https://twitter.com/vuetifyjs',
-        },
-        {
-          text: 'Articles',
-          href: 'https://medium.com/vuetify',
-        },
-      ],
-      whatsNext: [
-        {
-          text: 'Explore components',
-          href: 'https://vuetifyjs.com/components/api-explorer',
-        },
-        {
-          text: 'Select a layout',
-          href: 'https://vuetifyjs.com/getting-started/pre-made-layouts',
-        },
-        {
-          text: 'Frequently Asked Questions',
-          href: 'https://vuetifyjs.com/getting-started/frequently-asked-questions',
-        },
-      ],
+      inp: ""
     }),
+    methods: {
+      predict(){
+        fetch("https://localhost:7000/predict", {
+          method: "POST",
+          body: {"1":this.inp}
+        }).then((res) => console.log(res))
+      }
+    }
   }
 </script>
