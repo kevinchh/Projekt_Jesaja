@@ -3,13 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "SET NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service serve",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "start": "run-script-os",
+    "start:darwin:linux": "export NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service serve",
+    "start:win32": "SET NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service serve"
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "run-script-os": "^1.1.6",
     "vue": "^2.6.11",
     "vuetify": "^2.4.0"
   },
