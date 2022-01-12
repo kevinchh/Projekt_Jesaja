@@ -12,6 +12,7 @@ import sys
 
 ### own imports
 from data_struct import dataset
+from formats import provide_post_return
 
 # CREATE MODEL
 config_model = AutoConfig.from_pretrained("/home/kevin/projects/jesaja/Projekt_Jesaja/use_cases/eval_student/predefined/config.json")
@@ -106,8 +107,6 @@ def get_predictions(df, loader):
 
 
 
-
-
 def predict(text):
     #print(text["1"])
     test_names, test_texts = [], []
@@ -122,4 +121,6 @@ def predict(text):
     test_texts_loader = DataLoader(test_texts_set, **test_params)
     for i in test_texts_loader:
         prediction = inference(i)
-    return prediction
+    res =  provide_post_return(prediction, text)
+
+    return res

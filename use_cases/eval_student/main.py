@@ -18,12 +18,10 @@ def route_predict():
 
     #cal prediction function with data and model
     #
+
     res = predict([unstructured_text["1"]])
 
-    response = {
-        'res': res
-    }
-    return jsonify(response)
+    return jsonify(res)
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=7000)
