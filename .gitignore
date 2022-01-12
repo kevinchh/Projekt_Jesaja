@@ -4,3 +4,4 @@
 .ipynb_checkpoints
 __pycache__/
 /use_cases/predefined/*
+/use_cases/eval_student/predefined/*
