@@ -3,3 +3,4 @@
 /use_cases/eval_student/preprocessed_test_set.csv
 .ipynb_checkpoints
 __pycache__/
+/use_cases/eval_student/predefined/*
