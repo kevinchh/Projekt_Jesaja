@@ -36,10 +36,18 @@
     }),
     methods: {
       predict(){
-        fetch("https://localhost:7000/predict", {
+        fetch("http://localhost:7000/predict", {
           method: "POST",
-          body: {"1":this.inp}
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({"1":this.inp})
         }).then((res) => console.log(res))
+        .catch(err => console.error("Failed to load: ",err))
+        /* fetch("http://localhost:7000/", {
+          method: "GET"
+        }).then(res => console.log(res)) */
       }
     }
   }
