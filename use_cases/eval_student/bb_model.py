@@ -15,12 +15,12 @@ from data_struct import dataset
 from formats import provide_post_return
 
 # CREATE MODEL
-config_model = AutoConfig.from_pretrained("/home/kevin/projects/jesaja/Projekt_Jesaja/use_cases/eval_student/predefined/config.json")
-model = AutoModelForTokenClassification.from_pretrained("/home/kevin/projects/jesaja/Projekt_Jesaja/use_cases/eval_student/predefined/pytorch_model.bin",
+config_model = AutoConfig.from_pretrained("predefined/config.json")
+model = AutoModelForTokenClassification.from_pretrained("predefined/pytorch_model.bin",
                                                         config=config_model)
 #model.to(config['device'])
 #optimizer = torch.optim.Adam(params=model.parameters(), lr=config['learning_rates'][0])
-model.load_state_dict(torch.load("/home/kevin/projects/jesaja/Projekt_Jesaja/use_cases/eval_student/predefined/bigbird_v26.pt",
+model.load_state_dict(torch.load("predefined/bigbird_v26.pt",
                                  map_location=torch.device('cpu')))
 
 # CREATE DICTIONARIES THAT WE CAN USE DURING TRAIN AND INFER
@@ -36,7 +36,7 @@ test_params = {'batch_size': 1, #4
                 'pin_memory':False # True
                 }
 
-tokenizer = AutoTokenizer.from_pretrained("/home/kevin/projects/jesaja/Projekt_Jesaja/use_cases/eval_student/predefined")
+tokenizer = AutoTokenizer.from_pretrained("predefined")
 
 
 def inference(batch):
