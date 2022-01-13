@@ -17,6 +17,7 @@
         color="blue-grey"
         class="ma-2 white--text"
         fab
+        :disabled = "!inp "
         @click="predict">
         <v-icon dark>
           mdi-cloud-upload
@@ -43,7 +44,8 @@
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({"1":this.inp})
-        }).then((res) => console.log(res))
+        }).then((res) => res.json())
+        .then(data => console.log(data))
         .catch(err => console.error("Failed to load: ",err))
         /* fetch("http://localhost:7000/", {
           method: "GET"

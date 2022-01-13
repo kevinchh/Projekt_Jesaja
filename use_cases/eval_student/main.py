@@ -23,7 +23,6 @@ def route_predict():
 
     #cal prediction function with data and model
     #
-    print(f"Request Body: {unstructured_text}")
     res = predict([unstructured_text["1"]])
 
     return jsonify(res)
