@@ -38,12 +38,15 @@
     </v-app-bar>
 
     <v-main>
+      <v-btn @click="callPredict"></v-btn>
       <HelloWorld/>
     </v-main>
   </v-app>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+import * as types from './store/types';
 import HelloWorld from './components/HelloWorld';
 
 export default {
@@ -54,7 +57,15 @@ export default {
   },
 
   data: () => ({
-    //
+    test: 'Test text to test vuex store and api calls.'
   }),
+  methods: {
+    ...mapActions({
+      predict: types.predictEval
+    }),
+    callPredict() {
+      this.predict(this.test);
+    }
+  }
 };
 </script>

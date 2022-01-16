@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
-import evaluation from '';
+import evaluation from './modules/evaluation';
 
 Vue.use(Vuex);
 
