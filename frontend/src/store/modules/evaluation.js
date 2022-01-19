@@ -12,7 +12,8 @@ const defaultState = () => ({
 const state = defaultState();
 
 const getters = {
-    [types.GET_PREDICTIONS]: (state) => state.prediction
+    [types.GET_PREDICTIONS]: (state) => state.prediction,
+    [types.IS_LOADING]: (state) => state.loading
 }
 
 const mutations = {
@@ -31,11 +32,11 @@ const actions = {
             commit(types.SET_LOADING, true);
             // get predictions
             response = await axios.post('/predict', {"1":payload});
+            commit(types.SET_PREDICTIONS, response.data);
         } catch (error) {
             console.error(`POST Error: localhost:7000/predict`, error);
         } finally {
             console.log("From Store", response.data);
-            commit(types.SET_PREDICTIONS, response.data);
             commit(types.SET_LOADING, false);
         }
     }

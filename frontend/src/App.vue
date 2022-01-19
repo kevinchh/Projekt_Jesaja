@@ -48,7 +48,7 @@ export default {
   }),
   methods: {
     ...mapActions({
-      predict: types.predictEval
+    predict: types.predictEval
     }),
     callPredict() {
       this.predict(this.test);
