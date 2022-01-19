@@ -55,20 +55,20 @@
       </v-col >
     </v-row >
     <v-row>
-  <v-expansion-panels>
-    <v-expansion-panel>
-      <v-expansion-panel-header>
-        Color Description
-      </v-expansion-panel-header>
-      <v-expansion-panel-content>
-        <div v-for="(k,i) in color_code" :key="k">
-          <span v-bind:style = "{ 'color': k}">
-            {{i}}
-          </span>
-        </div>
-      </v-expansion-panel-content>
-    </v-expansion-panel>
-  </v-expansion-panels>
+      <v-expansion-panels>
+        <v-expansion-panel>
+          <v-expansion-panel-header>
+            Color Description
+          </v-expansion-panel-header>
+          <v-expansion-panel-content>
+            <div v-for="(k,i) in color_code" :key="k">
+              <span v-bind:style = "{ 'color': k}">
+                {{i}}
+              </span>
+            </div>
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+      </v-expansion-panels>
     </v-row>
   </v-container>
 </template>
