@@ -1,5 +1,6 @@
 // Getters
 export const GET_PREDICTIONS = 'GET_PREDICTIONS';
+export const GET_MAPPED_PREDICTION = 'GET_MAPPED_PREDICTION';
 export const IS_LOADING = 'IS_LOADING';
 
 // Mutations

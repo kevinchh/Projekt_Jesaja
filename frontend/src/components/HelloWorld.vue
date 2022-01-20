@@ -34,7 +34,7 @@
                 width = "4"
               ></v-progress-linear>
             </div>
-            <span v-for="i in entities" :key="i.text" :style = "{ 'color': i.color, 'text-align': 'left' }">
+            <span v-for="i in calcData" :key="i.text" :style = "{ 'color': i.color, 'text-align': 'left' }">
               {{i.text}}
             </span>
           </v-card>
@@ -77,6 +77,7 @@
 
 import { mapActions, mapGetters } from 'vuex';
 import * as types from '../store/types';
+import { colorCode } from '../const/evaluationTypes';
 
 
   export default {
@@ -85,12 +86,8 @@ import * as types from '../store/types';
   },
 
     data: () => ({
-      queries: ['O', 'Lead', 'Position', 'Claim', 'Counterclaim', 'Rebuttal', 'Evidence', 'Concluding Statement'],
-      color_code: {'O':"#595446", 'Lead':"#967a2c", 'Position':"#95962c", 'Claim':"#76962c", 'Counterclaim':"#2c3d20", 'Rebuttal':"#203d2c",
-       'Evidence':"#21b59f", 'Concluding Statement':"#13303b"},
-      entities: [],
+      color_code: colorCode,
       inp: "Furthermore, asking for multiple opinions can benifit during competitions for a position slot, as cadidates needs to make decisions on what they need to say or do. For example, it can be helpful in situations like elections, both for the U.S. or simply in school. If a student is running for a position in office to represent his/her school, he/she can ask a widespread and diverse audience. First, asking other students is their best bet to obtaining information. Other students can inform him/her about what they want, like better water fountains, recess, or healthier food. Then, the student running can make changes to the way they run for the election, and on his/her speech, take a different approach. In addition, if the student running asks an adult, they will get to know a more realistic way the school can be improved. Since a student, even as a student officer, isn't able to make a significant change to a school, they can inform the school board about ways to make the school better.",
-      out: "O Lead Position"
     }),
     methods: {
       ...mapActions({
@@ -98,30 +95,13 @@ import * as types from '../store/types';
       }),
       callPredict() {
         this.predict(this.inp);
-      },
-      set_entities(data){
-        let words = data["input"][0].split(" ")
-        for(let i in data["out_dict"]){
-          let temp ={}
-          temp.text = words.slice(parseInt(i), data["out_dict"][i][0] + 1).join(" ")
-          temp.color = this.color_code[data["out_dict"][i][1]]
-          this.entities.push(temp)
-        }
-        //this.loading = false
       }
     },
     computed: {
       ...mapGetters({
-        pred_data: types.GET_PREDICTIONS,
+        calcData: types.GET_MAPPED_PREDICTION,
         loading: types.IS_LOADING
       })
-    },
-    watch: {
-      pred_data(newVal){
-        this.entities = []
-        //this.loading = true
-        this.set_entities(newVal)
-      }
     }
 
   }
