@@ -23,7 +23,8 @@ const getters = {
         return Object.entries(state.prediction["out_dict"]).map(value => {
             return {
                 text: words.slice(parseInt(value[0]), value[1][0] + 1).join(" "),
-                color: colorCode[value[1][1]]
+                color: colorCode[value[1][1]],
+                queryName: value[1][1]
             };
         });
     },
