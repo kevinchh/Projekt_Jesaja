@@ -18,6 +18,36 @@
             height= 370
             loading = false
           ></v-textarea>
+          <v-card outlined width="600" height="50" style="transform: translate(0px, -9px);">
+            <v-card-actions>
+              <v-list-item class="grow">
+                <v-row
+                  align="center"
+                  justify="end"
+                >
+                  <v-btn
+                    rounded
+                    color="blue-grey"
+                    class="ma-2 white--text"
+                    dark
+                    style="transform: translate(0px, -9px);"
+                    :disabled = "!inp"
+                    :loading="loading"
+                    @click="callPredict"
+                  >
+                    Calculate
+                    <v-icon
+                      right
+                      dark
+                    >
+                      mdi-play-network
+                    </v-icon>
+                  </v-btn>
+                </v-row>
+              </v-list-item>
+            </v-card-actions>
+          </v-card>
+        </v-card>
       </v-col >
       <v-col cols = "6" >
           <v-card outlined width="600" height = "400">
@@ -34,6 +64,7 @@
               ></v-progress-linear>
             </div>
             <span
+              v-else
               v-for="(val, idx) in calcData" 
               :key="idx"
               @mouseover="mouseOverSpan(idx)"
@@ -62,30 +93,35 @@
     </v-row>
     <v-row>
       <v-col cols="12">
-        <v-btn
-          color="blue-grey"
-          class="ma-2 white--text"
-          fab
-          :disabled = "!inp "
-          @click="callPredict">
-          <v-icon dark>
-            mdi-cloud-upload
-          </v-icon>
-        </v-btn>
+        <div style="height:50px"></div>
       </v-col >
     </v-row >
     <v-row>
       <v-expansion-panels>
         <v-expansion-panel>
-          <v-expansion-panel-header>
-            Color Description
+          <v-expansion-panel-header style="background: #eee">
+            <span style="font-weight: bold">Legend</span>
           </v-expansion-panel-header>
           <v-expansion-panel-content>
-            <div v-for="(k,i) in color_code" :key="i">
-              <span v-bind:style = "{ 'color': k.hover}">
-                {{i}}
+            <template v-for="(k,i) in color_code">
+              <span :key="i+'x'" style="display: inline-block">
+                <span :key="i+'l'" style="white-space: nowrap">
+                  <v-chip
+                    v-if="i !== 'O'"
+                    :key="i"
+                    dark 
+                    small 
+                    :color="k.dark">{{getIdByQueryName[i]}}</v-chip>
+                        {{i !== 'O' ? '-' : ''}}
+                  <span 
+                    v-if="i !== 'O'" 
+                    :key="i+'a'" 
+                    :style = "{'font-weight': 'bold', 'margin-right': '40px'}">
+                    {{i}}
+                  </span>
+                </span>
               </span>
-            </div>
+            </template>
           </v-expansion-panel-content>
         </v-expansion-panel>
       </v-expansion-panels>
