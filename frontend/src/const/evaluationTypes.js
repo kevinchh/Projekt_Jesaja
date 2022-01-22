@@ -10,9 +10,9 @@ export const colorCode = {
         dark: "#187719"
     }, 
     'Position': {
-        light: "#e19a6366",
-        hover: "#E19A63",
-        dark: "#894A1A"
+        light: "#aa6cce66",
+        hover: "#AA6CCE",
+        dark: "#5C297A"
     }, 
     'Claim': {
         light: "#eba69a66",
@@ -25,9 +25,9 @@ export const colorCode = {
         dark: "#7A7A29"
     }, 
     'Rebuttal': {
-        light: "#aa6cce66",
-        hover: "#AA6CCE",
-        dark: "#5C297A"
+        light: "#e19a6366",
+        hover: "#E19A63",
+        dark: "#894A1A"
     },
     'Evidence': {
         light: "#49b4dc66",
@@ -64,9 +64,10 @@ export const queryIds = [
 ];
 
 const mapTwoArrays = (arr1, arr2) => {
-    return arr1.map((val, idx) => {
+    return arr1.reduce((acc, cur, idx) => {
         return {
-            [val]: arr2[idx]
+            ...acc,
+            [cur]: arr2[idx]
         };
     });
 };
