@@ -7,7 +7,7 @@
     </v-row>
     <v-row class="grey d-flex lighten-5" justify-content="center">
       <v-col cols="6"  align-self="start">
-        <v-card outlined width="600" height = "400">
+        <v-card outlined height = "400">
           <v-textarea
             v-model = "inp"
             name="name"
@@ -19,7 +19,7 @@
             height= 370
             loading = false
           ></v-textarea>
-          <v-card outlined width="600" height="50" style="transform: translate(0px, -9px);">
+          <v-card outlined height="50" style="transform: translate(0px, -9px);">
             <v-card-actions>
               <v-list-item class="grow">
                 <v-row
@@ -51,7 +51,7 @@
         </v-card>
       </v-col >
       <v-col cols = "6" >
-          <v-card outlined width="600" height = "450">
+          <v-card outlined height = "450">
             <div v-if="loading">
                 <span :style = "{'text-align': 'center'}" >
                   Progressing your input
