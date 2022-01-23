@@ -6,13 +6,14 @@
       </v-col>
     </v-row>
     <v-row class="grey d-flex lighten-5" justify-content="center">
-      <v-col cols="6"  align-self="center">
+      <v-col cols="6"  align-self="start">
         <v-card outlined width="600" height = "400">
           <v-textarea
             v-model = "inp"
             name="name"
             label="Test Eingabe"
-            id="id"
+            id="scroll"
+            class="pl-3 pr-4"
             no-resize
             full-width
             height= 370
@@ -50,7 +51,7 @@
         </v-card>
       </v-col >
       <v-col cols = "6" >
-          <v-card outlined width="600" height = "400">
+          <v-card outlined width="600" height = "450">
             <div v-if="loading">
                 <span :style = "{'text-align': 'center'}" >
                   Progressing your input
@@ -63,42 +64,40 @@
                 width = "4"
               ></v-progress-linear>
             </div>
-            <span
-              v-else
-              v-for="(val, idx) in calcData" 
-              :key="idx"
-              @mouseover="mouseOverSpan(idx)"
-              @mouseleave="mouseLeaveSpan(idx)"
-              :style = "{ 
-                'background-color': active[idx] ? val.color.hover : val.color.light, 
-                'border-radius': '20px', 
-                'text-align': 'left', 
-                'padding': '3px 2px 3px'}">
+            <div v-else class="pa-3" id="scroll" style="height: 450px; display: inline-block; overflow: auto;">
+              <span
+                v-for="(val, idx) in calcData" 
+                :key="idx"
+                @mouseover="mouseOverSpan(idx)"
+                @mouseleave="mouseLeaveSpan(idx)"
+                :style = "{ 
+                  'background-color': active[idx] ? val.color.hover : val.color.light, 
+                  'border-radius': '20px', 
+                  'text-align': 'left', 
+                  'padding': '3px 2px 3px',
+                  'height': '430px',
+                  'overflow': 'auto'}">
 
-              <v-tooltip v-if="val.queryName !== 'O'" top>
-                <template v-slot:activator="{ on, attrs }">
-                  <v-chip 
-                    v-bind="attrs"
-                    v-on="on"
-                    dark 
-                    small 
-                    :color="val.color.dark">{{getIdByQueryName[val.queryName]}}</v-chip>
-                </template>
-                <span>{{val.queryName}}</span>
-              </v-tooltip>
-              {{val.text}}
-            </span>
+                <v-tooltip v-if="val.queryName !== 'O'" top>
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-chip 
+                      v-bind="attrs"
+                      v-on="on"
+                      dark 
+                      small 
+                      :color="val.color.dark">{{getIdByQueryName[val.queryName]}}</v-chip>
+                  </template>
+                  <span>{{val.queryName}}</span>
+                </v-tooltip>
+                {{val.text}}
+              </span>
+            </div>
           </v-card>
       </v-col>
     </v-row>
     <v-row>
-      <v-col cols="12">
-        <div style="height:50px"></div>
-      </v-col >
-    </v-row >
-    <v-row>
-      <v-expansion-panels>
-        <v-expansion-panel>
+      <v-expansion-panels :value="0" class="mt-2">
+        <v-expansion-panel open>
           <v-expansion-panel-header style="background: #eee">
             <span style="font-weight: bold">Legend</span>
           </v-expansion-panel-header>
@@ -176,3 +175,16 @@ import { colorCode, getIdByQueryName } from '../const/evaluationTypes';
   }
 
 </script>
+
+<style>
+  #scroll::-webkit-scrollbar {
+    width: 8px;
+    background-color: #F5F5F5;
+  }
+
+  #scroll::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: #D5D5D5;
+  }
+</style>
