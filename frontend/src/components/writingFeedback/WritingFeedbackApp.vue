@@ -66,25 +66,25 @@
             </div>
             <div v-else class="pa-3" id="scroll" style="height: 450px; display: inline-block; overflow: auto;">
               <span
-                v-for="(val, idx) in calcData" 
+                v-for="(val, idx) in calcData"
                 :key="idx"
                 @mouseover="mouseOverSpan(idx)"
                 @mouseleave="mouseLeaveSpan(idx)"
-                :style = "{ 
-                  'background-color': active[idx] ? val.color.hover : val.color.light, 
-                  'border-radius': '20px', 
-                  'text-align': 'left', 
+                :style = "{
+                  'background-color': active[idx] ? val.color.hover : val.color.light,
+                  'border-radius': '20px',
+                  'text-align': 'left',
                   'padding': '3px 2px 3px',
                   'height': '430px',
                   'overflow': 'auto'}">
 
                 <v-tooltip v-if="val.queryName !== 'O'" top>
                   <template v-slot:activator="{ on, attrs }">
-                    <v-chip 
+                    <v-chip
                       v-bind="attrs"
                       v-on="on"
-                      dark 
-                      small 
+                      dark
+                      small
                       :color="val.color.dark">{{getIdByQueryName[val.queryName]}}</v-chip>
                   </template>
                   <span>{{val.queryName}}</span>
@@ -108,13 +108,13 @@
                   <v-chip
                     v-if="i !== 'O'"
                     :key="i"
-                    dark 
-                    small 
+                    dark
+                    small
                     :color="k.dark">{{getIdByQueryName[i]}}</v-chip>
                         {{i !== 'O' ? '-' : ''}}
-                  <span 
-                    v-if="i !== 'O'" 
-                    :key="i+'a'" 
+                  <span
+                    v-if="i !== 'O'"
+                    :key="i+'a'"
                     :style = "{'font-weight': 'bold', 'margin-right': '40px'}">
                     {{i}}
                   </span>
@@ -131,12 +131,12 @@
 <script>
 import Vue from 'vue';
 import { mapActions, mapGetters } from 'vuex';
-import * as types from '../store/types';
-import { colorCode, getIdByQueryName } from '../const/evaluationTypes';
+import * as types from '../../store/types';
+import { colorCode, getIdByQueryName } from '../../const/evaluationTypes';
 
 
   export default {
-    name: 'HelloWorld',
+    name: 'WritingFeedbackApp',
     components : {
   },
 
