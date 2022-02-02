@@ -1,10 +1,5 @@
 <template>
   <v-container>
-    <v-row class="text-center">
-      <v-col cols="12">
-        <h1>Feedback Evaluation</h1>
-      </v-col>
-    </v-row>
     <v-row class="grey d-flex lighten-5" justify-content="center">
       <v-col cols="6"  align-self="start">
         <v-card outlined height = "400">
@@ -138,7 +133,7 @@ import { colorCode, getIdByQueryName } from '../../const/evaluationTypes';
   export default {
     name: 'WritingFeedbackApp',
     components : {
-  },
+    },
 
     data: () => ({
       color_code: colorCode,
