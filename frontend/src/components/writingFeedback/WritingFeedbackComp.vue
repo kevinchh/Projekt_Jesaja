@@ -1,31 +1,33 @@
 <template>
-  <div>
-    <v-container>
-      <v-row class="text-center">
+  <div class="background">
+    <v-container class="pb-0">
+      <v-row class="text-start mt-2">
         <v-col cols="12">
-          <h1>Feedback Evaluation</h1>
+          <div class="display-2 font-weight-light">Feedback Evaluation</div>
         </v-col>
       </v-row>
       <v-row>
         <v-col>
-          <div class="text-center">
-            <v-btn
-              class="ma-2"
-              outlined
-              color="black"
-              @click="goToApp"
-            >
-              Application
-            </v-btn>
-            <v-btn
-              class="ma-2"
-              outlined
-              color="black"
-              @click="goToExpl"
-            >
-              Explanation
-            </v-btn>
-          </div>
+          <v-btn
+            class="my-2 rounded-lg"
+            x-large
+            dark
+            :plain="app_site == 0"
+            color="blue-grey darken-2"
+            @click="goToApp"
+          >
+            Application
+          </v-btn>
+          <v-btn
+            class="ml-2 my-2 rounded-lg"
+            x-large
+            dark
+            :plain="app_site == 1"
+            color="blue-grey darken-2"
+            @click="goToExpl"
+          >
+            Explanation
+          </v-btn>
         </v-col>
       </v-row>
     </v-container>
@@ -61,3 +63,11 @@ export default {
   }
 }
 </script>
+
+<style>
+  .background {
+    background-color: #F5F4F4;
+    width: 100%;
+    height: 100%;
+  }
+</style>

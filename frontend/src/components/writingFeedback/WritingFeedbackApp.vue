@@ -1,20 +1,20 @@
 <template>
   <v-container>
-    <v-row class="grey d-flex lighten-5" justify-content="center">
+    <v-row class="d-flex" justify-content="center">
       <v-col cols="6"  align-self="start">
-        <v-card outlined height = "400">
+        <v-card class="rounded-xl" height = "395" style="border-bottom-left-radius: 6px !important; border-bottom-right-radius: 6px !important;">
           <v-textarea
             v-model = "inp"
             name="name"
             label="Test Eingabe"
             id="scroll"
-            class="pl-3 pr-4"
+            class="pl-3 pr-2"
             no-resize
             full-width
             height= 370
             loading = false
           ></v-textarea>
-          <v-card outlined height="50" style="transform: translate(0px, -9px);">
+          <v-card  height="50" style="transform: translate(0px, -8px); border-bottom-left-radius: 36px !important; border-bottom-right-radius: 36px !important;">
             <v-card-actions>
               <v-list-item class="grow">
                 <v-row
@@ -46,20 +46,24 @@
         </v-card>
       </v-col >
       <v-col cols = "6" >
-          <v-card outlined height = "450">
-            <div v-if="loading">
-                <span :style = "{'text-align': 'center'}" >
-                  Progressing your input
-                </span>
-                <v-progress-linear
-                color="success"
-                indeterminate
-                rounded
-                height="10"
-                width = "4"
-              ></v-progress-linear>
-            </div>
-            <div v-else class="pa-3" id="scroll" style="height: 450px; display: inline-block; overflow: auto;">
+          <v-card class="rounded-xl"  height = "450">
+            <v-row v-if="loading" align-content="center" style="height: 100%">
+              <v-col class="mx-4">
+                <div>
+                  <div :style = "{'text-align': 'center'}" >
+                    Progressing your input
+                  </div>
+                  <v-progress-linear
+                    color="success"
+                    indeterminate
+                    rounded
+                    height="10"
+                    width = "4"
+                  ></v-progress-linear>
+                </div>
+              </v-col>
+            </v-row>
+            <div v-else class="pl-3 mt-4 mr-2" id="scroll" style="height: 420px; display: inline-block; overflow: auto;">
               <span
                 v-for="(val, idx) in calcData"
                 :key="idx"
@@ -91,8 +95,9 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-expansion-panels :value="0" class="mt-2">
-        <v-expansion-panel open>
+    <v-col cols="12">
+      <v-expansion-panels :value="0">
+        <v-expansion-panel class="rounded-xl" open>
           <v-expansion-panel-header style="background: #eee">
             <span style="font-weight: bold">Legend</span>
           </v-expansion-panel-header>
@@ -119,6 +124,7 @@
           </v-expansion-panel-content>
         </v-expansion-panel>
       </v-expansion-panels>
+    </v-col>
     </v-row>
   </v-container>
 </template>
@@ -137,7 +143,8 @@ import { colorCode, getIdByQueryName } from '../../const/evaluationTypes';
 
     data: () => ({
       color_code: colorCode,
-      inp: "Furthermore, asking for multiple opinions can benifit during competitions for a position slot, as cadidates needs to make decisions on what they need to say or do. For example, it can be helpful in situations like elections, both for the U.S. or simply in school. If a student is running for a position in office to represent his/her school, he/she can ask a widespread and diverse audience. First, asking other students is their best bet to obtaining information. Other students can inform him/her about what they want, like better water fountains, recess, or healthier food. Then, the student running can make changes to the way they run for the election, and on his/her speech, take a different approach. In addition, if the student running asks an adult, they will get to know a more realistic way the school can be improved. Since a student, even as a student officer, isn't able to make a significant change to a school, they can inform the school board about ways to make the school better.",
+      inp: "",
+      exampleText: "Furthermore, asking for multiple opinions can benifit during competitions for a position slot, as cadidates needs to make decisions on what they need to say or do. For example, it can be helpful in situations like elections, both for the U.S. or simply in school. If a student is running for a position in office to represent his/her school, he/she can ask a widespread and diverse audience. First, asking other students is their best bet to obtaining information. Other students can inform him/her about what they want, like better water fountains, recess, or healthier food. Then, the student running can make changes to the way they run for the election, and on his/her speech, take a different approach. In addition, if the student running asks an adult, they will get to know a more realistic way the school can be improved. Since a student, even as a student officer, isn't able to make a significant change to a school, they can inform the school board about ways to make the school better.",
       active: [],
       getIdByQueryName: getIdByQueryName
     }),
