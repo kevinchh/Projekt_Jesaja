@@ -25,7 +25,7 @@
                     rounded
                     color="blue-grey"
                     class="ma-2 white--text"
-                    dark
+                    :dark="!!inp"
                     style="transform: translate(0px, -9px);"
                     :disabled = "!inp"
                     :loading="loading"
