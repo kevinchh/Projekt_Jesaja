@@ -6,14 +6,22 @@
           <v-textarea
             v-model = "inp"
             name="name"
-            label="Test Eingabe"
             id="scroll"
-            class="pl-3 pr-2"
+            class="pl-3 pr-2 textarea__label"
             no-resize
             full-width
             height= 370
             loading = false
-          ></v-textarea>
+          >
+            <template v-slot:label>
+              <div class="headline mb-1">
+                Enter or insert text here
+              </div>
+              <div style="white-space: normal; line-height: 1.3rem;" class="subtitle-1">
+                After entering, press the CALCULATE button and the result will be presented to the right or below.
+              </div>
+            </template>
+          </v-textarea>
           <v-card  height="50" style="transform: translate(0px, -8px); border-bottom-left-radius: 36px !important; border-bottom-right-radius: 36px !important;">
             <v-card-actions>
               <v-list-item class="grow">
@@ -188,5 +196,9 @@ import { colorCode, getIdByQueryName } from '../../const/evaluationTypes';
     -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.3);
     border-radius: 10px;
     background-color: #D5D5D5;
+  }
+
+  .textarea__label > .v-input__control > .v-input__slot > .v-text-field__slot > label {
+    height: 100% !important;
   }
 </style>
