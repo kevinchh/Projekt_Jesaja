@@ -47,19 +47,76 @@
           'padding-right': '50px',
           'overflow': 'auto'}">
           <span class=".body-1">
-              The model we use for solving this task is the implemented version provided by HuggingFace. More specifically, we leverage their implementation of the
+              The model we use for solving this task is the implemented version provided by HuggingFace.
+              More specifically, we leverage their implementation of the
             </span>
                <a href="https://arxiv.org/abs/2007.14062">Big Bird architecture</a>,
-          <span> which is a transformer-based model. Such models are some of the most successfull when it comes to
-                the application of DL to NLP. However, they come with a core limitation: they have a quadratic dependency on the sequence length due to their full attention
+          <span> which is a transformer-based model. Transformers receive a set of tokens each represented
+                by a vector as input and
+                send them through a number of layers in order to get an higher order represenation of the input.
+                Usually, one needs as many nodes in a layer as tokens in the sequence.
+                After each layer, the representation should be better than the representation from the
+                previous layer.
+                Transformer models have proven to be some of the most successfull when it comes to
+                the application of DL to NLP. However, they come with a core limitation:
+                they have a quadratic dependency on the sequence length due to the full attention
                 mechanism.
           </span>
           <span class ="font-weight-bold">
             But what is the full-attention mechanism?
           </span>
-          <p>
-            Basically transformers receive
-          </p>
+          <span>
+            As mentioned before, transformers work based on different layers, each taking the input from the
+            layer before and creating a new and better representation. This is done by incorporating
+            information from all other tokens from the previous layer. This means that the representation of each
+            token in layer n is calculated based on all tokens form layer n-1. In short: we need attention
+            routed from every token in the layer before to every token in the following layer.
+            Thus, transformers have n-squared computation and memory requirements. This makes it hard to
+            scale large inputs into qualitative models with feasible training time. The big bird architecture
+            is able to solve this problem by theoretically scaling the computational requirements down
+            to O(n),
+          </span>
+          <br />
+          <span>
+            In order to do this, the architecture uses 3 different types of attention: random attention,
+            window attention, and global attention. Window and global attention are already known concepts from
+            the long former archtecure, making the big bird architecture basically a long former with a
+            adds random attention component.
+          </span>
+          <br />
+          <span>
+            Random attention is used to connect random nodes form
+            one layer to the next layer. Each query only selects a fixed number (r) of random tokens, not
+            dependent on the sequence length. The random attention component makes use of knowledge of
+            the random walk theory, which tells us that we do not need a fully connected component (e.g. a model
+            with full-attention) to make all nodes reachable from all other nodes. Thus, the same routing as in
+            full-attention models is possible if enough layers are used (in combination with window attention).
+            As the number of connections r is constant for each output node,
+            random attention requires O(r * n) = O(n) run-time.
+          </span>
+          <br />
+          <span>
+            Window attention is based on the position of the specific tokens. Each token at the i-th
+            position is attending to itself and to its direct neighbors. Window attention can be seen
+            as a kind of convolution: each next layer takes input form a window of the previous layer.
+            Thus, the last layers will be dependant on all input tokens. In order to make up for the lack
+            of full-attention, we can compensate by adding a higher number of layers, Window attention also
+            has a constant complexity of O(n).
+          </span>
+          <br />
+          <span>
+            Global attention is necessary to process tokens which are so important that they have to be
+            connected to everything else. E.g. a classifier token which has to be prepent to some piece of text
+            in order to represent the classification output. Every other node in the network sends information to
+            nodes representing such tokens and receives information from it.
+          </span>
+          <br />
+          <span>
+            It is also important to keep in mind that all three attention mechanisms are able to
+            route information from one node to every other. Therefore, it is possible to "simulate" the behavior
+            of full attention without having to deal with the high computation costs. It is said that in worst case,
+            n layers are necessary to simulate full attention, resulting in a quadratic worst-case run-time.
+          </span>
         </v-col>
         <v-col cols="5" class = "text-center">
           <div :style="{'background': '#eee', 'padding-bottom':'20px'}">
@@ -87,7 +144,10 @@
           'padding-right': '50px',
           'overflow': 'auto'}">
           <span class=".body-1">
-            Hi lets go
+            So how is the big bird data architecture used? We basically used student writing data
+            provided by a Kaggle challange (*) as input for our model. The training data was already pre-labelled
+            and already contained the underlying classes of each token. Furthermore, we add NER labelling to each token.
+
           </span>
         </v-col>
       </v-row>
