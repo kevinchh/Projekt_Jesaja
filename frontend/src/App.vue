@@ -25,19 +25,19 @@
     </v-app-bar>
 
     <v-main>
-      <HelloWorld/>
+      <WritingFeedbackComp/>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+import WritingFeedbackComp from './components/writingFeedback/WritingFeedbackComp';
 
 export default {
   name: 'App',
 
   components: {
-    HelloWorld,
+    WritingFeedbackComp,
   },
 };
 </script>
