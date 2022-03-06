@@ -2,7 +2,7 @@
   <div>
     <v-container>
       <v-row :style = "{'padding-top': '100px'}">
-        <v-col cols="5" class = "text-center">
+        <v-col cols="12" md="5" class = "text-center">
           <div :style="{'background': '#eee', 'padding-bottom':'20px'}">
             <h2 :style = "{'padding-top': '10px'}">What does the model do?</h2>
             <br />
@@ -11,7 +11,7 @@
             </p>
           </div>
         </v-col>
-        <v-col col = "7" :style = "{
+        <v-col cols="12" md="7" :style = "{
           'text-align': 'left',
           'padding-left': '50px',
           'padding-right': '50px',
@@ -36,18 +36,27 @@
           <br />
           <span class=".body-1">
             Our model can be used to make it easier for students to receive feedback on their writing and increase opportunities to improve writing outcomes.
-            It may be directly integrated and used by virtual writing tutors or automated writing systems, while teachers could make us them to reduce grading time.
+            It may be directly integrated and used by virtual writing tutors or automated writing systems, while teachers could make use of them to reduce grading time.
           </span>
         </v-col>
       </v-row>
       <v-row :style = "{'padding-top': '200px'}">
-        <v-col col = "7" :style = "{
+        <v-col class = "text-center hidden-lg-and-up">
+          <div :style="{'background': '#eee', 'padding-bottom':'20px'}">
+            <h2 :style = "{'padding-top': '10px'}">How does the model work?</h2>
+            <br />
+            <p class =".subtitle-1 text--secondary font-italic">
+              Levering scientifc advances in the field of NLP through usage of the Big Bird architecture.
+            </p>
+          </div>
+        </v-col>
+        <v-col cols="12" md="7" :style = "{
           'text-align': 'left',
           'padding-left': '50px',
           'padding-right': '50px',
           'overflow': 'auto'}">
           <span class=".body-1">
-              The model we use for solving this task is the implemented version provided by HuggingFace.
+              The model we used for solving this task is a state-of-the-art DL architecture called Big Bird provided by HuggingFace.
               More specifically, we leverage their implementation of the
             </span>
                <a href="https://arxiv.org/abs/2007.14062">Big Bird architecture</a>,
@@ -80,12 +89,12 @@
           <span>
             In order to do this, the architecture uses 3 different types of attention: random attention,
             window attention, and global attention. Window and global attention are already known concepts from
-            the long former archtecure, making the big bird architecture basically a long former with a
-            adds random attention component.
+            the long former archtecure, making the big bird architecture basically a long former with an
+            additional random attention component.
           </span>
           <br />
           <span>
-            Random attention is used to connect random nodes form
+            Random attention is used to connect random nodes from
             one layer to the next layer. Each query only selects a fixed number (r) of random tokens, not
             dependent on the sequence length. The random attention component makes use of knowledge of
             the random walk theory, which tells us that we do not need a fully connected component (e.g. a model
@@ -100,7 +109,7 @@
             position is attending to itself and to its direct neighbors. Window attention can be seen
             as a kind of convolution: each next layer takes input form a window of the previous layer.
             Thus, the last layers will be dependant on all input tokens. In order to make up for the lack
-            of full-attention, we can compensate by adding a higher number of layers, Window attention also
+            of full-attention, we can compensate by adding a higher number of layers. Window attention also
             has a constant complexity of O(n).
           </span>
           <br />
@@ -118,7 +127,7 @@
             n layers are necessary to simulate full attention, resulting in a quadratic worst-case run-time.
           </span>
         </v-col>
-        <v-col cols="5" class = "text-center">
+        <v-col cols="5" class = "text-center hidden-md-and-down">
           <div :style="{'background': '#eee', 'padding-bottom':'20px'}">
             <h2 :style = "{'padding-top': '10px'}">How does the model work?</h2>
             <br />
@@ -129,7 +138,7 @@
         </v-col>
       </v-row>
       <v-row :style = "{'padding-top': '200px'}">
-        <v-col cols="5" class = "text-center">
+        <v-col cols="12" md="5" class = "text-center">
           <div :style="{'background': '#eee', 'padding-bottom':'20px'}">
             <h2 :style = "{'padding-top': '10px'}">How is the data processed?</h2>
             <br />
@@ -138,19 +147,48 @@
             </p>
           </div>
         </v-col>
-        <v-col col = "7" :style = "{
+        <v-col cols="12" md="7" :style = "{
+          'text-align': 'left',
+          'padding-left': '50px',
+          'padding-right': '50px',
+          'overflow': 'auto'}">
+          <span>
+            So how is the big bird data architecture used? We basically used student writing data
+            provided by </span><a href = "https://www.kaggle.com/c/feedback-prize-2021/data"> a Kaggle challange </a> <span>as input for our model. The training data was already pre-labelled
+            and already contained the underlying classes of each token. Furthermore, we applied IOB-NER labelling to each token to enhance our feature space.
+
+          </span>
+        </v-col>
+      </v-row>
+      <v-row :style = "{'padding-top': '200px'}">
+        <v-col cols="12" class = "text-center hidden-lg-and-up">
+          <div :style="{'background': '#eee', 'padding-bottom':'20px'}">
+            <h2 :style = "{'padding-top': '10px'}">How does the model perform?</h2>
+            <br />
+            <p class =".subtitle-1 text--secondary font-italic">
+              Providing a performance level for our model.
+            </p>
+          </div>
+        </v-col>
+        <v-col cols="12" md="7" :style = "{
           'text-align': 'left',
           'padding-left': '50px',
           'padding-right': '50px',
           'overflow': 'auto'}">
           <span class=".body-1">
-            So how is the big bird data architecture used? We basically used student writing data
-            provided by a Kaggle challange (*) as input for our model. The training data was already pre-labelled
-            and already contained the underlying classes of each token. Furthermore, we add NER labelling to each token.
-
+            Our model was able to archieve a validation F1 score of 0.615 based on the test dataset.
           </span>
-        </v-col>
-      </v-row>
+          </v-col>
+          <v-col cols="5"  class = "text-center hidden-md-and-down">
+            <div :style="{'background': '#eee', 'padding-bottom':'20px'}">
+              <h2 :style = "{'padding-top': '10px'}">How does the model perform?</h2>
+              <br />
+              <p class =".subtitle-1 text--secondary font-italic">
+                Providing a performance level for our model.
+              </p>
+            </div>
+          </v-col>
+        </v-row>
     </v-container>
   </div>
 </template>

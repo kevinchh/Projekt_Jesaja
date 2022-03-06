@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row class="d-flex" justify-content="center">
-      <v-col cols="6"  align-self="start">
+      <v-col cols="12" md="6" align-self="start" :class="{'pb-15': $vuetify.breakpoint.mdAndDown, 'pb-0': $vuetify.breakpoint.lgAndUp}">
         <v-card class="rounded-xl" height = "395" style="border-bottom-left-radius: 6px !important; border-bottom-right-radius: 6px !important;">
           <v-textarea
             v-model = "inp"
@@ -53,7 +53,7 @@
           </v-card>
         </v-card>
       </v-col >
-      <v-col cols = "6" >
+      <v-col cols="12" md="6">
           <v-card class="rounded-xl"  height = "450">
             <v-row v-if="loading" align-content="center" style="height: 100%">
               <v-col class="mx-4">
@@ -154,8 +154,9 @@ import { colorCode, getIdByQueryName } from '../../const/evaluationTypes';
       inp: "",
       exampleText: "Furthermore, asking for multiple opinions can benifit during competitions for a position slot, as cadidates needs to make decisions on what they need to say or do. For example, it can be helpful in situations like elections, both for the U.S. or simply in school. If a student is running for a position in office to represent his/her school, he/she can ask a widespread and diverse audience. First, asking other students is their best bet to obtaining information. Other students can inform him/her about what they want, like better water fountains, recess, or healthier food. Then, the student running can make changes to the way they run for the election, and on his/her speech, take a different approach. In addition, if the student running asks an adult, they will get to know a more realistic way the school can be improved. Since a student, even as a student officer, isn't able to make a significant change to a school, they can inform the school board about ways to make the school better.",
       active: [],
-      getIdByQueryName: getIdByQueryName
+      getIdByQueryName: getIdByQueryName,
     }),
+
     methods: {
       ...mapActions({
         predict: types.predictEval
@@ -168,6 +169,9 @@ import { colorCode, getIdByQueryName } from '../../const/evaluationTypes';
       },
       mouseLeaveSpan(index) {
         Vue.set(this.active, index, false);
+      },
+      onResize () {
+        this.isMobile = window.innerWidth < 600
       }
     },
     computed: {
