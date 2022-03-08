@@ -25,19 +25,19 @@
     </v-app-bar>
 
     <v-main>
-      <WritingFeedbackComp/>
+      <router-view />
     </v-main>
   </v-app>
 </template>
 
 <script>
-import WritingFeedbackComp from './components/writingFeedback/WritingFeedbackComp';
+//import WritingFeedbackComp from './components/writingFeedback/WritingFeedbackComp';
 
 export default {
   name: 'App',
 
   components: {
-    WritingFeedbackComp,
+    //WritingFeedbackComp,
   },
 };
 </script>
