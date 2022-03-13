@@ -25,19 +25,21 @@
     </v-app-bar>
 
     <v-main>
-      <WritingFeedbackComp/>
+      <mainPage/>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import WritingFeedbackComp from './components/writingFeedback/WritingFeedbackComp';
+//import WritingFeedbackComp from './components/writingFeedback/WritingFeedbackComp';
+import mainPage from './components/mainPage/mainPage';
 
 export default {
   name: 'App',
 
   components: {
-    WritingFeedbackComp,
+    //WritingFeedbackComp,
+    mainPage
   },
 };
 </script>
