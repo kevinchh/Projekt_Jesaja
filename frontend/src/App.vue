@@ -31,13 +31,12 @@
 </template>
 
 <script>
-//import WritingFeedbackComp from './components/writingFeedback/WritingFeedbackComp';
+
 
 export default {
   name: 'App',
 
   components: {
-    //WritingFeedbackComp,
   },
 };
 </script>
