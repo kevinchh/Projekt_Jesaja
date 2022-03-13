@@ -25,21 +25,18 @@
     </v-app-bar>
 
     <v-main>
-      <mainPage/>
+      <router-view />
     </v-main>
   </v-app>
 </template>
 
 <script>
-//import WritingFeedbackComp from './components/writingFeedback/WritingFeedbackComp';
-import mainPage from './components/mainPage/mainPage';
+
 
 export default {
   name: 'App',
 
   components: {
-    //WritingFeedbackComp,
-    mainPage
   },
 };
 </script>
