@@ -29,12 +29,21 @@
         </v-col>
         <v-col cols="3"></v-col>
       </v-row>
+      <v-row justify="center">
+        <v-btn small @click="design=1">
+          Design1
+        </v-btn>
+        <v-btn small @click="design=2">
+          Design2
+        </v-btn>
+      </v-row>
     </v-container>
     <v-item-group active-class="primary">
     <v-container>
       <v-row justify="center" align="center">
         <v-col v-for="n in 3" :key="n" cols="12" md="4" >
-          <CardComponent title="Feedback Evaluation" />
+          <CardComponent v-if="design===1" class="mt-4" title="Feedback Evaluation" />
+          <CardComponent2 v-if="design===2" title="Feedback Evaluation" />
         </v-col>
       </v-row>
     </v-container>
@@ -107,11 +116,13 @@
 
 <script>
 import CardComponent from '../CardComponent';
+import CardComponent2 from '../CardComponent2';
 
 export default {
   name: 'MainPage',
   components: {
-    CardComponent
+    CardComponent,
+    CardComponent2
   },
   methods: {
     bottom(){
@@ -125,6 +136,7 @@ export default {
   data: () => ({
       show_k: false,
       show_m: false,
+      design: 1
     })
 }
 </script>
