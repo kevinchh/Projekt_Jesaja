@@ -1,3 +1,4 @@
 export const ROUTE_NAMES = {
-    EVAL: 'eval'
+    EVAL: 'eval',
+    MAIN: 'main'
 };

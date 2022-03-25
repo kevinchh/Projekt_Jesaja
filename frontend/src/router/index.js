@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import { ROUTE_NAMES } from './routerNames';
 
 import WritingFeedbackComp from '../components/writingFeedback/WritingFeedbackComp';
+import MainPage from '../components/mainPage/MainPage';
 
 Vue.use(VueRouter);
 
@@ -12,7 +13,12 @@ const routes = [
         name: ROUTE_NAMES.EVAL,
         component: WritingFeedbackComp
     },
-    { path: '*', redirect: { name: ROUTE_NAMES.EVAL}}
+    {
+        path: '/',
+        name: ROUTE_NAMES.MAIN,
+        component: MainPage
+    },
+    { path: '*', redirect: { name: ROUTE_NAMES.MAIN}}
 ];
 
 const router = new VueRouter({

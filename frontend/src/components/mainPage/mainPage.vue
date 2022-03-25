@@ -23,7 +23,7 @@
       <v-row>
         <v-col cols="3"></v-col>
         <v-col cols="6">
-          <h1 :style = "{'text-align': 'center','margin-top': '100px','margin-bottom': '100px'}">
+          <h1 :style = "{'text-align': 'center','margin-top': '100px','margin-bottom': '20px'}">
             Implementations
           </h1>
         </v-col>
@@ -32,17 +32,9 @@
     </v-container>
     <v-item-group active-class="primary">
     <v-container>
-      <v-row>
+      <v-row justify="center" align="center">
         <v-col v-for="n in 3" :key="n" cols="12" md="4" >
-          <v-item v-slot="{ active, toggle }">
-            <v-card class="d-flex align-center" dark height="200" @click="toggle" >
-                <v-scroll-y-transition>
-                  <div v-if="active" class="text-h2 flex-grow-1 text-center" >
-                    Active
-                  </div>
-                </v-scroll-y-transition>
-              </v-card>
-        </v-item>
+          <CardComponent title="Feedback Evaluation" />
         </v-col>
       </v-row>
     </v-container>
@@ -67,7 +59,7 @@
             </v-btn>
             <v-spacer></v-spacer>
             <v-btn icon @click="show_k = !show_k">
-              <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+              <v-icon>{{ show_k ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
             </v-btn>
           </v-card-actions>
           <v-expand-transition>
@@ -95,7 +87,7 @@
             </v-btn>
             <v-spacer></v-spacer>
             <v-btn icon @click="show_m = !show_m">
-              <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+              <v-icon>{{ show_m ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
             </v-btn>
           </v-card-actions>
           <v-expand-transition>
@@ -114,11 +106,12 @@
 </template>
 
 <script>
-
+import CardComponent from '../CardComponent';
 
 export default {
-  name: 'mainPage',
+  name: 'MainPage',
   components: {
+    CardComponent
   },
   methods: {
     bottom(){
