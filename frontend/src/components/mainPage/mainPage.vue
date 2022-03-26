@@ -117,7 +117,7 @@
 
 
 export default {
-  name: 'mainPage',
+  name: 'MainPage',
   components: {
   },
   methods: {
